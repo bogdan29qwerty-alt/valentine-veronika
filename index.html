@@ -3,423 +3,236 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Вероничка, моя любимая ♡ 14 февраля</title>
+  <title>Вероничка ♡ 14 февраля</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Sacramento&display=swap" rel="stylesheet">
+  <!-- Более рукописные и жирные шрифты -->
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Playfair+Display:wght@700;900&family=Great+Vibes&family=Sacramento&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg-start: #fff8fa;
-      --bg-end:   #fff0f5;
-      --pink:     #ffb6c1;
-      --rose:     #ff85a2;
-      --gold:     #f9e4b7;
-      --text:     #5d3e4f;
-      --white:    #fffaf5;
+      --beige: #fffaf0;
+      --dark-beige: #f5e8d3;
+      --burgundy: #5c2b2b;
+      --rose: #e05a7e;
     }
 
     * { margin:0; padding:0; box-sizing:border-box; }
 
     body {
-      min-height: 100vh;
-      background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
-      color: var(--text);
-      font-family: 'Caveat', cursive;
-      overflow-x: hidden;
-      position: relative;
+      background: var(--beige);
+      color: #3f2a2a;
+      font-family: 'Caveat', cursive;          /* основной текст — рукописный и жирный */
+      font-weight: 700;                        /* жирность по умолчанию */
+      line-height: 1.65;
+      overflow-y: scroll;
+      font-size: 1.28rem;
     }
 
-    /* Очень лёгкие падающие сердечки */
-    .bg-heart {
-      position: fixed;
-      pointer-events: none;
-      font-size: 1.8rem;
-      opacity: 0.12;
-      color: #ff85a2;
-      animation: bg-fall linear infinite;
-      z-index: -1;
-      user-select: none;
-    }
-
-    @keyframes bg-fall {
-      0%   { transform: translateY(-10vh) rotate(0deg);  opacity: 0.12; }
-      100% { transform: translateY(110vh) rotate(360deg); opacity: 0;   }
-    }
-
-    /* Экран с конвертом */
-    #envelope-screen {
-      position: fixed;
-      inset: 0;
-      background: rgba(255, 248, 250, 0.96);
-      backdrop-filter: blur(18px);
+    header {
+      height: 100vh;
+      background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.45)), url('img/1.jpg') center/cover no-repeat;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      z-index: 100;
-      transition: opacity 1.5s ease, visibility 1.5s ease;
-    }
-
-    #envelope-screen.hidden {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-    }
-
-    .envelope-container {
       text-align: center;
-      position: relative;
-    }
-
-    .envelope {
-      width: 360px;
-      height: 260px;
-      position: relative;
-      margin: 0 auto 60px;
-      perspective: 1600px;
-    }
-
-    .envelope-body {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, #ffffff, #fff8fa);
-      border-radius: 24px 24px 100px 100px / 20px 20px 60px 60px;
-      border: 3px solid #ffb6c1;
-      box-shadow: 
-        0 20px 50px rgba(255,182,193,0.22),
-        inset 0 10px 30px rgba(255,255,255,0.7);
-      overflow: hidden;
-    }
-
-    .envelope-flap {
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 55%;
-      background: linear-gradient(to bottom, #ffebee, #ffccd5);
-      clip-path: polygon(0 0, 100% 0, 50% 100%);
-      border-radius: 24px 24px 0 0;
-      transform-origin: top;
-      transition: transform 1.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-      box-shadow: 0 15px 40px rgba(0,0,0,0.07);
-    }
-
-    .envelope.open .envelope-flap {
-      transform: rotateX(170deg) translateY(-140%);
-    }
-
-    .envelope-heart {
-      position: absolute;
-      top: 40%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 6.8rem;
-      color: #ff85a2;
-      text-shadow: 0 6px 20px rgba(255,133,162,0.35);
-      pointer-events: none;
-      z-index: 5;
-    }
-
-    /* Пульсирующая кнопка */
-    .open-btn {
-      padding: 20px 70px;
-      font-family: 'Dancing Script', cursive;
-      font-size: 3.6rem;
       color: white;
-      background: linear-gradient(135deg, #ff85a2, #ff4d82);
-      border: none;
-      border-radius: 70px;
-      cursor: pointer;
-      box-shadow: 
-        0 12px 35px rgba(255,77,130,0.45),
-        0 0 0 14px rgba(255,133,162,0.2);
-      transition: all 0.4s ease;
-      animation: pulse-glow 2.3s infinite ease-in-out;
-    }
-
-    .open-btn:hover {
-      transform: scale(1.08);
-      box-shadow: 
-        0 18px 50px rgba(255,77,130,0.55),
-        0 0 0 20px rgba(255,133,162,0.3);
-    }
-
-    @keyframes pulse-glow {
-      0%, 100% {
-        box-shadow: 0 12px 35px rgba(255,77,130,0.45), 0 0 0 14px rgba(255,133,162,0.2);
-        transform: scale(1);
-      }
-      50% {
-        box-shadow: 0 18px 50px rgba(255,77,130,0.6), 0 0 0 24px rgba(255,133,162,0.35);
-        transform: scale(1.05);
-      }
-    }
-
-    .hint {
-      margin-top: 20px;
-      font-size: 1.6rem;
-      color: #ff85a2;
-      opacity: 0.85;
-    }
-
-    /* Основной контент */
-    #main-content {
-      min-height: 100vh;
-      padding: 10vh 6vw;
-      opacity: 0;
-      transform: translateY(50px);
-      transition: all 1.8s ease 0.6s;
       position: relative;
+    }
+
+    .header-content {
       z-index: 2;
     }
 
-    #main-content.visible {
-      opacity: 1;
-      transform: translateY(0);
+    .main-title {
+      font-family: 'Great Vibes', cursive;     /* максимально рукописный и пышный */
+      font-size: clamp(5.5rem, 14vw, 12rem);
+      font-weight: 400;                        /* Great Vibes сам по себе очень жирный */
+      color: transparent;
+      background: linear-gradient(135deg, #fff, #ffb3c6, #ff8fab, #fff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      text-shadow: 0 0 80px rgba(255,143,171,0.6);
+      line-height: 0.92;
+      margin-bottom: 2vh;
+      animation: titleGlow 6s ease-in-out infinite;
+      letter-spacing: -1px;
     }
 
-    h1 {
-      font-family: 'Dancing Script', cursive;
-      font-size: clamp(5.5rem, 15vw, 11rem);
-      text-align: center;
-      color: #ff85a2;
-      margin-bottom: 0.2em;
-      text-shadow: 0 8px 25px rgba(255,133,162,0.35);
+    @keyframes titleGlow {
+      0%,100% { text-shadow: 0 0 60px rgba(255,143,171,0.5); }
+      50% { text-shadow: 0 0 120px rgba(255,77,130,0.8); }
     }
 
     .subtitle {
       font-family: 'Sacramento', cursive;
-      font-size: 4.2rem;
-      text-align: center;
-      color: #ffb6c1;
-      margin-bottom: 2.5em;
+      font-size: clamp(3.2rem, 9vw, 6.5rem);
+      font-weight: 400;
+      color: #ffd4d4;
+      margin-bottom: 8vh;
+      letter-spacing: 1px;
+    }
+
+    .ideas {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 10vh 5vw;
+    }
+
+    .block {
+      background: #5c2b2b;
+      color: white;
+      border-radius: 24px;
+      padding: 6vh 7vw;
+      margin-bottom: 8vh;
+      box-shadow: 0 20px 60px rgba(92,43,43,0.25);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .block::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 120px;
+      height: 100%;
+      background: linear-gradient(90deg, rgba(255,255,255,0.15), transparent);
+    }
+
+    .number {
+      font-family: 'Playfair Display', serif;
+      font-size: 10rem;
+      font-weight: 900;
+      opacity: 0.15;
+      position: absolute;
+      top: -28px;
+      left: 30px;
+    }
+
+    .block h2 {
+      font-family: 'Caveat', cursive;
+      font-size: 3.2rem;
+      font-weight: 700;
+      margin-bottom: 3vh;
+      letter-spacing: 0.5px;
+    }
+
+    .block p {
+      font-size: 1.45rem;
+      line-height: 1.6;
+    }
+
+    .photos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 5vh;
+    }
+
+    .photo-card {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+      transition: transform 0.4s ease;
+    }
+
+    .photo-card:hover {
+      transform: scale(1.04);
+    }
+
+    .photo-card img {
+      width: 100%;
+      height: auto;
+      display: block;
     }
 
     .letter {
-      max-width: 860px;
-      margin: 0 auto 7vh;
-      font-size: 2.2rem;
-      line-height: 1.7;
-      text-align: center;
-      background: rgba(255,255,255,0.84);
-      backdrop-filter: blur(16px);
-      border-radius: 36px;
-      padding: 4.8rem 3.8rem;
-      border: 1px solid rgba(255,182,193,0.48);
-      box-shadow: 0 25px 80px rgba(0,0,0,0.14);
-      position: relative;
-    }
-
-    .letter::before,
-    .letter::after {
-      content: '♡';
-      position: absolute;
-      font-size: 3.8rem;
-      color: #ffb6c1;
-      opacity: 0.35;
-    }
-
-    .letter::before { top: -24px; left: 34px; }
-    .letter::after  { bottom: -24px; right: 34px; }
-
-    .highlight { color: #ff4d82; font-weight: 700; }
-
-    .heart { font-size: 5.5rem; margin: 0.6em 0; display: block; animation: beat 2.4s infinite; }
-
-    @keyframes beat {
-      0%,100% { transform: scale(1); }
-      40%     { transform: scale(1.2); }
-      70%     { transform: scale(0.95); }
-    }
-
-    /* Падающие сердечки при открытии */
-    .heart-particle {
-      position: absolute;
-      pointer-events: none;
-      font-size: 2.2rem;
-      animation: float-down linear forwards;
-      z-index: 3;
-    }
-
-    @keyframes float-down {
-      to {
-        transform: translateY(130vh) rotate(900deg);
-        opacity: 0;
-      }
-    }
-
-    /* Фото */
-    .photos {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2.8rem;
-      justify-content: center;
-      max-width: 1300px;
-      margin: 0 auto 6vh;
-    }
-
-    .photo-frame {
-      width: 360px;
-      height: 460px;
+      max-width: 800px;
+      margin: 12vh auto;
       background: white;
+      padding: 10vh 8vw;
       border-radius: 32px;
-      overflow: hidden;
-      box-shadow: 0 18px 50px rgba(255,133,162,0.3);
-      border: 10px solid white;
-      transition: all 0.4s ease;
-    }
-
-    .photo-frame:hover {
-      transform: scale(1.05) translateY(-12px);
-      box-shadow: 0 30px 70px rgba(255,133,162,0.4);
-    }
-
-    .photo-frame img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .placeholder {
-      height: 100%;
-      background: linear-gradient(135deg, #ffeef2, #fff0f5);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #ff85a2;
-      font-size: 1.5rem;
+      box-shadow: 0 30px 90px rgba(0,0,0,0.1);
+      font-size: 2.05rem;
+      line-height: 1.9;
       text-align: center;
-      padding: 20px;
+    }
+
+    .letter p {
+      margin-bottom: 2.4vh;
+    }
+
+    .signature {
+      font-family: 'Great Vibes', cursive;
+      font-size: 5.2rem;
+      color: var(--rose);
+      margin-top: 8vh;
+      font-weight: 400;
     }
   </style>
 </head>
 <body>
 
-<!-- Фоновые лёгкие сердечки -->
-<script>
-// Генерируем 20–25 фоновых сердечек с разной скоростью и размерами
-for (let i = 0; i < 25; i++) {
-  const heart = document.createElement('div');
-  heart.className = 'bg-heart';
-  heart.textContent = ['♡', '💗', '💕', '❤️'][Math.floor(Math.random() * 4)];
-  heart.style.left = Math.random() * 100 + 'vw';
-  heart.style.top = Math.random() * -20 + 'vh';
-  heart.style.fontSize = (Math.random() * 1.2 + 0.8) + 'rem';
-  heart.style.animationDuration = (Math.random() * 60 + 80) + 's'; // очень медленно
-  heart.style.animationDelay = Math.random() * 40 + 's';
-  document.body.appendChild(heart);
-}
-</script>
-
-<div id="envelope-screen">
-  <div class="envelope-container">
-    <div class="envelope" id="envelope">
-      <div class="envelope-body"></div>
-      <div class="envelope-flap"></div>
-      <div class="envelope-heart">💌</div>
-    </div>
-
-    <button class="open-btn" id="openButton">Открыть</button>
-    <div class="hint">нажми скорее ♡</div>
+<header>
+  <div class="header-content">
+    <div class="main-title">С 14 февраля</div>
+    <div class="subtitle">моя любимая Вероничка ♡</div>
   </div>
-</div>
+</header>
 
-<div id="main-content">
+<div class="ideas">
 
-  <h1>С 14 февраля, моя самая-самая</h1>
-  <div class="subtitle">Вероничка, любовь моя</div>
+  <div class="block">
+    <div class="number">01</div>
+    <h2>Ты — моё самое большое счастье</h2>
+    <p>Каждый день с тобой я чувствую себя самым счастливым человеком на земле.</p>
+    <div class="photos-grid">
+      <div class="photo-card"><img src="img/1.jpg" alt=""></div>
+      <div class="photo-card"><img src="img/2.jpg" alt=""></div>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="number">02</div>
+    <h2>Твоя улыбка — мой любимый вид</h2>
+    <p>Когда ты улыбаешься, весь мир становится ярче.</p>
+    <div class="photos-grid">
+      <div class="photo-card"><img src="img/3.jpg" alt=""></div>
+    </div>
+  </div>
 
   <div class="letter">
-
-    <p>Моя невероятная, самая нежная, самая красивая и самая важная девочка на свете…</p>
-
-    <p class="heart">💗</p>
-
-    <p>Ты — <span class="highlight">самая лучшая</span>.  
-    Лучше всех, кого я знал, знаю и когда-либо буду знать.</p>
-
-    <p>Твоя улыбка делает мой день,  
-    твои сообщения заставляют сердце биться быстрее,  
-    твои объятия — это дом, в котором я хочу жить вечно.</p>
-
-    <p>Спасибо, что ты такая настоящая, тёплая, умная, смешная и моя.  
-    Спасибо, что выбрала меня и позволяешь любить тебя каждый день всё сильнее.</p>
-
-    <p>Я безумно тобой горжусь, восхищаюсь и люблю тебя так сильно,  
-    что слов уже не хватает… но я всё равно буду пытаться говорить это каждый день.</p>
-
-    <p style="margin-top:2em; font-size:2.8rem;">
-      Ты — моё счастье. Моё всё.<br>
-      Навсегда твой,
-    </p>
-
-    <p style="font-size:4.5rem; margin-top:0.6em; color:#ff85a2; font-family:'Sacramento',cursive;">
-      Богдан ♡
-    </p>
-
-  </div>
-
-  <div class="photos">
-    <div class="photo-frame">
-      <img src="img/1.jpg" alt="Мы 1" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-      <div class="placeholder">Фото 1 (скоро будет здесь ♡)</div>
-    </div>
-
-    <div class="photo-frame">
-      <img src="img/2.jpg" alt="Мы 2" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-      <div class="placeholder">Фото 2 (скоро будет здесь ♡)</div>
-    </div>
-
-    <div class="photo-frame">
-      <img src="img/3.jpg" alt="Мы 3" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-      <div class="placeholder">Фото 3 (скоро будет здесь ♡)</div>
-    </div>
+    <p>Вероничка, моя самая нежная, самая красивая, самая тёплая и самая любимая девочка на всей планете...</p>
+    <p>Я безумно благодарен, что ты есть в моей жизни. Спасибо, что ты такая настоящая, искренняя и моя.</p>
+    <p>Я люблю тебя сегодня, завтра и всегда. И буду делать всё, чтобы ты каждый день чувствовала себя самой желанной и счастливой.</p>
+    <div class="signature">Твой Богдан ♡</div>
   </div>
 
 </div>
 
 <script>
-const envelope = document.getElementById('envelope');
-const screen   = document.getElementById('envelope-screen');
-const content  = document.getElementById('main-content');
-const openBtn  = document.getElementById('openButton');
-
-openBtn.addEventListener('click', () => {
-  envelope.classList.add('open');
-
-  setTimeout(createHearts, 600);
-  setTimeout(createHearts, 1000);
-  setTimeout(createHearts, 1400);
-
-  setTimeout(() => {
-    screen.classList.add('hidden');
-  }, 1700);
-
-  setTimeout(() => {
-    content.classList.add('visible');
-  }, 1900);
-});
-
-function createHearts() {
-  const colors = ['#ffb6c1', '#ff85a2', '#ffe4e1', '#fff0f5', '#f9e4b7', '#ffffff'];
-  const symbols = ['💗','💕','♡','❤️','💞','✨'];
-
-  for(let i = 0; i < 32; i++){
-    const h = document.createElement('div');
-    h.className = 'heart-particle';
-    h.textContent = symbols[Math.floor(Math.random()*symbols.length)];
-    h.style.color = colors[Math.floor(Math.random()*colors.length)];
-    h.style.left = Math.random()*100 + 'vw';
-    h.style.top = '-20vh';
-    h.style.fontSize = (Math.random()*1.8 + 1.5) + 'rem';
-    h.style.animationDuration = (Math.random()*7 + 8) + 's';
-    h.style.animationDelay = Math.random()*1.8 + 's';
-    document.body.appendChild(h);
-
-    setTimeout(() => h.remove(), 14000);
-  }
+// Лёгкие падающие сердечки
+for (let i = 0; i < 18; i++) {
+  const heart = document.createElement('div');
+  heart.style.position = 'fixed';
+  heart.style.fontSize = '1.8rem';
+  heart.style.opacity = '0.08';
+  heart.style.color = '#e05a7e';
+  heart.style.left = Math.random() * 100 + 'vw';
+  heart.style.top = '-10vh';
+  heart.style.animation = `fall ${Math.random()*50 + 60}s linear infinite`;
+  heart.style.animationDelay = Math.random() * 30 + 's';
+  heart.textContent = '♡';
+  document.body.appendChild(heart);
 }
+
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes fall {
+    to { transform: translateY(120vh) rotate(720deg); }
+  }
+`;
+document.head.appendChild(style);
 </script>
 
 </body>
